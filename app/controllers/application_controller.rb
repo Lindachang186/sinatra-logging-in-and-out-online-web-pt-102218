@@ -29,13 +29,13 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/error'
-    erb :error
-  end
-
   get '/logout' do
     session.clear
     redirect '/'
+  end
+
+  get '/error'
+    erb :error
   end
 
 
