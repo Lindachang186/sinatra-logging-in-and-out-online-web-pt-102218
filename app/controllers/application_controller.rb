@@ -22,7 +22,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/account' do
-    binding.pry
     if Helpers.current_user(session)
     redirect '/account'
     else
