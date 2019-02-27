@@ -16,14 +16,18 @@ class ApplicationController < Sinatra::Base
     if @user && @user.password == params[:password]
       session[:user_id]=@user.id
       redirect '/account'
-    end
-      redirect '/error'
+    else
+      erb :error
+    end 
   end
 
   get '/account' do
     binding.pry
-    @user = Helpers.current_user(session)
+    if Helpers.current_user(session)
     erb :account
+    else
+    erb :error
+  end
   end
 
   get '/logout' do
