@@ -18,16 +18,16 @@ class ApplicationController < Sinatra::Base
       redirect '/account'
     else
       erb :error
-    end 
+    end
   end
 
   get '/account' do
     binding.pry
     if Helpers.current_user(session)
-    erb :account
+    redirect '/account'
     else
     erb :error
-  end
+    end
   end
 
   get '/logout' do
