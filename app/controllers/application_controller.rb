@@ -1,6 +1,8 @@
 require_relative '../../config/environment'
 require 'pry'
+
 class ApplicationController < Sinatra::Base
+
   configure do
     set :views, Proc.new { File.join(root, "../views/") }
     enable :sessions unless test?
@@ -18,7 +20,7 @@ class ApplicationController < Sinatra::Base
       redirect '/account'
     else
     redirect '/error'
-  end
+    end
   end
 
   get '/account' do
@@ -32,10 +34,6 @@ class ApplicationController < Sinatra::Base
   get '/logout' do
     session.clear
     redirect '/'
-  end
-
-  get '/error'
-    erb :error
   end
 
 
